@@ -6,12 +6,11 @@ import Main from './pages/Main';
 import NotFound from './NotFound';
 
 const App = () => {
-  
 	return (
 		<div className='App'>
 			<BrowserRouter>
 				<Header/>
-        		<DotNav />
+        <DotNav />
 				<div style={{ paddingTop: '60px' }}>
 					<Routes>
 						<Route path="/portfolio" element={<Main />}></Route>
