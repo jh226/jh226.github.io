@@ -1,4 +1,3 @@
-import mimoticon from '../../assets/mimoticon.png';
 import './AboutMe.css';
 
 const AboutMe = (props) => {
