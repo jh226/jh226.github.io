@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import DotNav from './layout/DotNav';
@@ -8,19 +8,17 @@ import NotFound from './NotFound';
 const App = () => {
 	return (
 		<div className='App'>
-			<BrowserRouter>
-				<Header/>
-        <DotNav />
+			<HashRouter>
+				<Header />
+				<DotNav />
 				<div style={{ paddingTop: '60px' }}>
 					<Routes>
-						<Route path="/portfolio" element={<Main />}></Route>
-
-						{/*일치하는 라우트가 없는경우 처리 */}
-						<Route path="*" element={<NotFound />}></Route>
+						<Route path="/" element={<Main />} />
+						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</div>
 				<Footer />
-			</BrowserRouter>
+			</HashRouter>
 		</div>
 	);
 };
