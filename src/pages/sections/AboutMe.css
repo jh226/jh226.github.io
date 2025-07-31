@@ -1,60 +1,104 @@
 .aboutMe-section {
   height: calc(100vh - 50px);
+  margin-top: 70px;
+}
+
+.timeline {
+  --accent: #fc11bd;
+  --text: #0a0f2b;
+  --line: #fc11bd;
+  color: var(--text);
+  padding: 30px;
+}
+
+.timeline h1 {
+  border-left: 4px solid var(--accent);
+  padding: 10px 12px 10px;
+}
+
+.timeline ul {
+  list-style: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--items), 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.timeline ul:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  border-top: 3px solid var(--text);
+  left: 11px;
+}
+
+.timeline ul::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid var(--accent);
+}
+
+.timeline ul li {
+  --circle-size: 15px;
+  grid-column: var(--index);
+  overflow: hidden;
+  position: relative;
+  height: calc(100% + var(--circle-size) * 0.5);
+}
+
+.timeline ul li:after {
+  content: '';
+  width: var(--circle-size);
+  height: var(--circle-size);
+  background: var(--line);
+  position: absolute;
+  bottom: 0;
+  left: var(--circle-size);
+  border-radius: 100px;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.timeline ul li:nth-child(even):after {
+  bottom: auto;
+  top: 0;
+}
+
+.timeline ul li:nth-child(even) {
+  grid-row: 2;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }
-
-.history h2 { 
-  position: relative; 
-  font-size: 32px; 
-  color: #000; 
-  line-height: 1; 
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 40px;
+  margin-top: calc(var(--circle-size) * -0.45);
 }
 
-.history h2::before { 
-  content: ""; 
-  position: absolute; 
-  left: -40px; top: 50%; 
-  width: 17px; 
-  height: 17px; 
-  border-radius: 100%; 
-  background: #fff; 
-  transform: translateY(-50%); 
-  border: 5px solid #ff5a2b;  
-  box-sizing: border-box; 
+.timeline ul li:nth-child(odd) p:after,
+.timeline ul li:nth-child(even) h3:before {
+  content: "";
+  display: block;
+  border-left: 2px dashed var(--text);
+  height: 100vh;
+  margin-top: 10px;
+  position: absolute;
+  left: calc(var(--circle-size) - 1px);
 }
 
-.history div { 
-  position: relative; 
-  padding: 0 0 0 40px;
-}
-
-.history div::before { 
-  content: ""; 
-  position: absolute; 
-  left: 8px; top: 0; 
-  height: 100%; 
-  border-left: 2px solid #ddd;
-}
-
-.history div:first-child:before { 
-  top: 10px; 
-  height: clac(100%-10px);
-}
-
-.history ol { 
-  padding: 20px 0 74px; 
-}
-
-.history li { 
-  font-size: 17px;
-  color: #000; 
-  line-height: 30px;
-}
-.history li:not(:first-child) {
-  font-size: 14px;
-  color: #777;
+.timeline ul li:nth-child(even) h3:before {
+  height: 40px;
+  top: 0;
+  bottom: auto;
+  margin-top: 5px;
 }
